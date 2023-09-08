@@ -1,0 +1,36 @@
+/* ButtonComponent.css */
+.duo-button {
+  background-color: #1bb7d4; /* Duolingo's blue color */
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.95, 0.25, 1);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1),
+              -5px -5px 0px 0px rgba(0, 102, 128, 0.95); /* Adding 3D effect */
+}
+
+.duo-button:hover {
+  background-color: #159ba8; /* Slightly darker for hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
+              -5px -5px 0px 0px rgba(0, 102, 128, 0.95); /* Slightly darker 3D effect */ 
+  z-index: 4;
+}
+
+.duo-button:active {
+  background-color: #0e7c88; /* Even darker for active click */
+  box-shadow: none; /* Remove the box shadow */
+  transform: translate(-5px, -5px); /* Move the button up and to the left */
+}
+
+.card-button-container .duo-button {
+  width: 95%;  /* Makes the button take the full width of the container */
+  margin: 0;  /* Removes extra margins */
+}
+

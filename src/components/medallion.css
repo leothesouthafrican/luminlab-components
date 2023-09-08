@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* General styles */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Medallion container styles */
+.medallion-container {
+  width: 100%;
+  max-width: 1500px;
+  min-height: 300px;
+  background: linear-gradient(45deg, #FFCC00, #FFD700, #FFCC00);
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.19);
+  margin: 20px auto;
+  padding: 16px;
+  position: relative;
+  padding-bottom: 30px;
+  width: 90%;
+  position: relative;
+}
+
+.medallion-container:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 5px solid #ccc;
+    border-radius: 10px;  /* Adjusted to slightly less than the main container */
+    pointer-events: none;  /* Allows interaction with the medallion elements */
+    transition: border-color 0.6s ease-in-out; /* Transition for smooth color change */
+  }
+
+  /* Bright gold inner border on hover */
+  .medallion-container:hover:before {
+    border-color: #A52A2A;  /* Deep blue color */
+  }
+
+/* Medallion row styles */
+.medallion-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Medallion item styles */
+.medallion-item {
+  flex: 1;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* Medallion button styles */
+.medallion-button, .payback-button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Medallion icon styles */
+.medallion-icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+/* Medallion 3D block styles */
+.medallion-3d-block {
+  padding: 16px;
+  font-size: 20px;
+  background: #d4af37;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d4af37 0%, #b09830 40%, #d4af37 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-weight: bold;
+}
+
+.medallion-leaderboard-container {
+    padding: 16px;
+    box-sizing: border-box;
+    background: #f4f4f4;  /* Light background for contrast */
+    border-radius: 12px;  /* Consistent with other rounded elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Same box shadow for consistency */
+  }
+
+/* Medallion leaderboard styles */
+.medallion-leaderboard {
+  background: #d4af37;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 24px;
+  color: #d4af37;
+}
+
+/* Medallion table styles */
+.medallion-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.medallion-table th, .medallion-table td {
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+    padding: 8px 16px;  /* Reduced vertical padding from 16px to 8px */
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    text-align: left;
+  }
+
+/* Additional table styling for bold and double borders */
+.bold-border-top th, .bold-border-top td {
+  border-top: 2px solid rgba(0, 0, 0, 0.87);
+}
+
+.bold-border-bottom th, .bold-border-bottom td {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+}
+
+.double-border-bottom th, .double-border-bottom td {
+  border-bottom: double 3px rgba(0, 0, 0, 0.87);
+}
+
+.pro-mode-button {
+    cursor: pointer;
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 16px;
+    /* If you want it to take the full width, set width to 100% */
+    width: 100%;  
+  }
+  
+  .pro-mode-button-container {
+    display: flex;
+    /* Change to flex-start to align the button to the start of the container */
+    justify-content: flex-start; 
+    margin-top: 16px; /* Optional, adds some spacing above the button */
+  }
+
+  .pro-mode-button:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;  /* Adjusted to slightly less than the main button */
+  pointer-events: none;  /* Allows interaction with the button */
+  transition: border-color 0.6s ease-in-out; /* Transition for smooth color change */
+}
+
+.medallion-container:hover .pro-mode-button:before {
+  border-color: #A52A2A;  /* Color to match with the medallion hover */
+}

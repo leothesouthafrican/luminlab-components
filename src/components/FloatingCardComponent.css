@@ -1,0 +1,97 @@
+.floating-card {
+    width: 90%;
+    height: 500px;
+    margin: 20px auto;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.25, 0.95, 0.25, 1);
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  }
+  
+  .floating-card::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 20px); /* card width + 2 * border width */
+    height: calc(100% + 20px); /* card height + 2 * border width */
+    top: -10px;
+    left: -10px;
+    z-index: -1;
+    border-radius: inherit;
+    transition: inherit;
+  }
+  
+.floating-card.fade-out {
+    opacity: 0;
+  }
+
+
+.floating-card.gold {
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1),
+                -10px -10px 0px 0px rgba(200, 175, 50, 0.95);
+}
+
+.floating-card.silver {
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1),
+                -10px -10px 0px 0px rgba(150, 150, 150, 0.95);
+}
+
+.floating-card.bronze {
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1),
+                -10px -10px 0px 0px rgba(120, 90, 30, 0.95);
+}
+
+
+.floating-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
+                -10px -10px 0px 0px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    z-index: 4;
+}
+
+.card-container {
+    position: relative;
+    height: 550px;
+    width: 85%;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.gold {
+    top: 0;
+    right: 0;
+    z-index: 3;
+    background: linear-gradient(135deg, rgba(245, 215, 110, 0.95), #ffd900);
+}
+
+.silver {
+    top: 20px;
+    right: 40px;
+    z-index: 2;
+    background: linear-gradient(135deg, rgba(212, 212, 212, 0.95), rgba(168, 168, 168, 0.95));
+}
+
+.bronze {
+    top: 40px;
+    right: 80px;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(166, 121, 41, 0.95), #cd8032);
+}
+
+.card-button-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 10px 20px 10px; /* Increase the bottom padding */
+    display: flex;
+    justify-content: space-between; /* Aligns children on both ends */
+  }
+  
+.floating-card .card-button-container .left-button,
+.floating-card .card-button-container .right-button {
+    width: calc(60% - 10px);
+    margin: 0 30px;
+  }
+  
