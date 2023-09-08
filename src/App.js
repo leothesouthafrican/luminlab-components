@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
-import ButtonComponent from './components/ButtonComponent'; 
+import ButtonComponent from './components/ButtonComponent';
 import FloatingCardComponent from './components/FloatingCardComponent';
+import IvoryCardTable from './components/IvoryCardTable';  // <-- Import the new component
 
 function App() {
   const [topCard, setTopCard] = useState('gold');
   const cardColors = ['gold', 'silver', 'bronze'];
+
+  const retrofitMeasures = [
+    { name: "Insulation", cost: "€2000", savings: "€50/month" },
+    { name: "Solar Panels", cost: "€5000", savings: "€80/month" },
+  ];
 
   const handleCardClick = (color) => {
     if (color !== topCard) {
@@ -27,19 +33,52 @@ function App() {
 
   return (
     <div className="App">
-      <div className="button-container">
-        <ButtonComponent label="Duolingo" />
+      <div className="section">
+        <h2>Button Playground</h2>
+        <div className="button-container">
+          <ButtonComponent label="Button" />
+        </div>
       </div>
-      <div className="card-container">
-        {cardColors.map((color) => (
-          <FloatingCardComponent
-            key={color}
-            color={color}
-            onClick={handleCardClick}
-            style={cardStyle(color)}
-          />
-        ))}
+
+      <div className="section">
+      <h2>Floating Card Playground</h2>
+        <div className="card-container">
+          {cardColors.map((color) => (
+            <FloatingCardComponent
+              key={color}
+              color={color}
+              onClick={handleCardClick}
+              style={cardStyle(color)}
+              showButtons={false}
+            />
+          ))}
+        </div>
       </div>
+
+      {/* Move Investment Table here */}
+      <div className="section">
+        <h2>Investment Table</h2>
+        <div className="card-container">
+          <IvoryCardTable retrofitMeasures={retrofitMeasures} />
+        </div>
+      </div>
+
+      <div className="section">
+  <h2>Demo</h2>
+  <div className="card-container">
+    {cardColors.map((color) => (
+      <FloatingCardComponent
+        key={color}
+        color={color}
+        onClick={handleCardClick}
+        style={cardStyle(color)}
+        showButtons={true}
+        retrofitMeasures={retrofitMeasures}  // Pass the retrofitMeasures data to FloatingCardComponent
+        isDemo={true} // Add this line to identify it's a Demo table
+      />
+    ))}
+  </div>
+</div>
     </div>
   );
 }

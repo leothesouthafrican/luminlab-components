@@ -1,0 +1,47 @@
+.ivory-card-table-container {
+    background-color: ivory;
+    padding: 16px;
+    border-radius: 12px; /* Rounded corners like your floating cards */
+    box-shadow: none; /* Flat card */
+  }
+  
+.ivory-card-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+.ivory-table-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.ivory-table-item {
+    flex: 1;
+    margin: 0 8px;
+  }
+  
+.ivory-card-table-header {
+    margin-bottom: 16px;
+  }
+  
+  .ivory-card-table th, .ivory-card-table td {
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+    padding: 8px 16px;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    text-align: left;
+  }
+  
+  .bold-border-top th, .bold-border-top td {
+    border-top: 2px solid rgba(0, 0, 0, 0.87);
+  }
+  
+  .bold-border-bottom th, .bold-border-bottom td {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+  }
+  
+  .double-border-bottom th, .double-border-bottom td {
+    border-bottom: double 3px rgba(0, 0, 0, 0.87);
+  }
+  
