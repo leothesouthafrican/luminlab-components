@@ -1,14 +1,28 @@
+/* IvoryCardTable.css */
+
 .ivory-card-table-container {
     background-color: ivory;
-    padding: 16px;
+    padding: 0px;
     border-radius: 12px; /* Rounded corners like your floating cards */
     box-shadow: none; /* Flat card */
-  }
+    margin: auto;
+    width: 95%;
+    margin-top: 220px;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    overflow-y: auto;  /* Scroll when content overflows */
+    height: auto;
+    max-height: 100%;
+    flex-grow: 1;
+
+}
   
 .ivory-card-table {
     width: 100%;
     border-collapse: collapse;
-  }
+    font-size: 0.7rem;  /* smaller font */
+    max-width: calc(100% - 0px); /* 100% - 2 * padding */
+}
 
 .ivory-table-row {
     display: flex;
@@ -18,6 +32,7 @@
 .ivory-table-item {
     flex: 1;
     margin: 0 8px;
+    padding: 5px;
   }
   
 .ivory-card-table-header {
@@ -44,4 +59,15 @@
   .double-border-bottom th, .double-border-bottom td {
     border-bottom: double 3px rgba(0, 0, 0, 0.87);
   }
+
+  .floating-card .ivory-card-table-container {
+    padding-top: 0px;
+    padding-bottom: 10px;
+  }
+
+  .content-container {
+    display: flex;
+    height: 100%; /* Take up all available vertical space within the floating card */
+  }
+  
   

@@ -1,3 +1,5 @@
+// FloatingCardComponent.js
+
 import React from 'react';
 import './FloatingCardComponent.css';
 import ButtonComponent from './ButtonComponent';
@@ -11,14 +13,15 @@ const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMea
       style={style}
     >
       {/* Place Investment Table here if showButtons is true */}
-      {showButtons && <IvoryCardTable retrofitMeasures={retrofitMeasures} />}
-
-      {showButtons && (
-        <div className="card-button-container">
-          <ButtonComponent label="Left Button" className="left-button" />
-          <ButtonComponent label="Right Button" className="right-button" />
-        </div>
-      )}
+      <div className="content-container">
+        {showButtons && <IvoryCardTable retrofitMeasures={retrofitMeasures} />}
+        {showButtons && (
+          <div className="card-button-container">
+            <ButtonComponent label="Left Button" className="left-button" />
+            <ButtonComponent label="Right Button" className="right-button" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

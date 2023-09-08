@@ -1,6 +1,8 @@
+/* Floating Card Component CSS */
 .floating-card {
     width: 90%;
-    height: 500px;
+    height: auto;
+    min-height: 550px;  /* Minimum height instead of fixed height */
     margin: 20px auto;
     border-radius: 16px;
     transition: all 0.4s cubic-bezier(0.25, 0.95, 0.25, 1);
@@ -8,7 +10,10 @@
     position: absolute;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
-  }
+    display: flex;
+    flex-direction: column;  /* Stack children vertically */
+}
+
   
   .floating-card::before {
     content: "";
@@ -80,14 +85,19 @@
 }
 
 .card-button-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 10px 20px 10px; /* Increase the bottom padding */
-    display: flex;
-    justify-content: space-between; /* Aligns children on both ends */
-  }
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
   
 .floating-card .card-button-container .left-button,
 .floating-card .card-button-container .right-button {
