@@ -3,6 +3,7 @@ import './App.css';
 import ButtonComponent from './components/ButtonComponent';
 import FloatingCardComponent from './components/FloatingCardComponent';
 import IvoryCardTable from './components/IvoryCardTable';  // <-- Import the new component
+import StatsCard from './components/StatsCard';  // Import the new component
 
 function App() {
   const [topCard, setTopCard] = useState('gold');
@@ -62,19 +63,26 @@ function App() {
           <IvoryCardTable retrofitMeasures={retrofitMeasures} />
         </div>
       </div>
-
       <div className="section">
+        <h2>Stats</h2>
+        <div className="card-container">
+          <StatsCard berRating={3} />
+        </div>
+      </div>
+{/* Demo Section */}
+<div className="section">
   <h2>Demo</h2>
   <div className="card-container">
-    {cardColors.map((color) => (
+    {cardColors.map((color, index) => (
       <FloatingCardComponent
         key={color}
         color={color}
         onClick={handleCardClick}
         style={cardStyle(color)}
         showButtons={true}
-        retrofitMeasures={retrofitMeasures}  // Pass the retrofitMeasures data to FloatingCardComponent
-        isDemo={true} // Add this line to identify it's a Demo table
+        retrofitMeasures={retrofitMeasures}
+        isDemo={true}
+        showStatsCard={true}  // Show StatsCard for all cards in the demo section
       />
     ))}
   </div>
