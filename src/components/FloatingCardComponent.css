@@ -26,6 +26,7 @@
     border-radius: inherit;
     transition: inherit;
   }
+
   
 .floating-card.fade-out {
     opacity: 0;
@@ -61,6 +62,9 @@
     width: 85%;
     margin: auto;
     padding-top: 50px;
+    display: flex;
+    flex-direction: row;  /* Changed from column to row */
+    align-items: start;  /* Align items at the top */
 }
 
 .gold {
@@ -95,7 +99,8 @@
 .content-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  justify-content: space-between; /* Add this line */
+  flex-grow: 1; /* Ensures that the container takes up the full height */
 }
 
   
@@ -104,4 +109,37 @@
     width: calc(60% - 10px);
     margin: 0 30px;
   }
+  
+  .minimal-stats-card-demo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0; /* Add this */
+    flex: 0 0 auto; /* Will not grow, will not shrink, initial width is auto */
+    width: 33.3333%; /* Takes up 1/3 of the container */
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 20%;  /* Adjust based on your needs */
+    right: 0;
+    transform: translateY(-50%);  /* Center vertically based on the new top value */
+  }
+
+  .ber-medallion-container {
+    flex-grow: 1;  /* Will grow to take up all available space */
+    align-items: center;
+    justify-content: center;
+    margin: 0;  /* No margins */
+    padding: 0;  /* No padding */
+    margin-left: 30px;
+  }
+  
+  .stats-card-container {
+    width: 100%;  /* Take the full width of the parent */
+    display: flex;  /* Enable flexbox */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0;  /* No padding */
+  }
+  
+  
   

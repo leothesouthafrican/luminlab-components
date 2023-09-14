@@ -1,27 +1,32 @@
-// FloatingCardComponent.js
-
 import React from 'react';
 import './FloatingCardComponent.css';
 import ButtonComponent from './ButtonComponent';
-import IvoryCardTable from './IvoryCardTable';  // <-- Import the IvoryCardTable component
-import StatsCard from './StatsCard';  // Import the new component
+import IvoryCardTable from './IvoryCardTable';
+import StatsCard from './StatsCard';
+import MinimalStatsCard from './MinimalStatsCard';
+import BerRatingMedallion from './BerRatingMedallion';
 
-const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMeasures, showStatsCard }) => {
+const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMeasures, isDemo, showStatsCard }) => {
   return (
     <div 
       className={`floating-card ${color}`} 
       onClick={() => onClick(color)}
       style={style}
     >
-      {/* Conditional rendering for StatsCard */}
-      {showStatsCard && (
-        <div className="stats-card-position">
-          <StatsCard berRating={3} />
-        </div>
-      )}
-      {/* Place Investment Table here if showButtons is true */}
       <div className="content-container">
+        <div className="stats-card-container">
+          {showStatsCard && (
+            <>
+              <div className="ber-medallion-container">
+                <BerRatingMedallion berRating="A1" />
+              </div>
+              {isDemo ? <MinimalStatsCard berRating={3} className="minimal-stats-card-demo" /> : <StatsCard berRating={3} />}
+            </>
+          )}
+        </div>
+        
         {showButtons && <IvoryCardTable retrofitMeasures={retrofitMeasures} />}
+        
         {showButtons && (
           <div className="card-button-container">
             <ButtonComponent label="Share" className="left-button" />

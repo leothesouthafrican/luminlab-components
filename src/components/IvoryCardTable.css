@@ -7,7 +7,7 @@
     box-shadow: none; /* Flat card */
     margin: auto;
     width: 95%;
-    margin-top: 220px;
+    margin-top: 5px;
     margin-bottom: 10px;
     flex-grow: 1;
     overflow-y: auto;  /* Scroll when content overflows */
@@ -59,15 +59,3 @@
   .double-border-bottom th, .double-border-bottom td {
     border-bottom: double 3px rgba(0, 0, 0, 0.87);
   }
-
-  .floating-card .ivory-card-table-container {
-    padding-top: 0px;
-    padding-bottom: 10px;
-  }
-
-  .content-container {
-    display: flex;
-    height: 100%; /* Take up all available vertical space within the floating card */
-  }
-  
-  

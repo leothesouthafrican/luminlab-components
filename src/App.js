@@ -1,9 +1,13 @@
+//app.js
+
 import React, { useState } from 'react';
 import './App.css';
 import ButtonComponent from './components/ButtonComponent';
 import FloatingCardComponent from './components/FloatingCardComponent';
 import IvoryCardTable from './components/IvoryCardTable';  // <-- Import the new component
 import StatsCard from './components/StatsCard';  // Import the new component
+import MinimalStatsCard from './components/MinimalStatsCard';  // Import the new component
+import BerRatingMedallion from './components/BerRatingMedallion';  // Import the new component
 
 function App() {
   const [topCard, setTopCard] = useState('gold');
@@ -67,6 +71,13 @@ function App() {
         <h2>Stats</h2>
         <div className="card-container">
           <StatsCard berRating={3} />
+          <MinimalStatsCard berRating={3} />  {/* Add the new MinimalStatsCard */}
+        </div>
+      </div>
+      <div className="section">
+        <h2>Ber Rating Medallion</h2>
+        <div className="card-container">
+          <BerRatingMedallion berRating="A1" />
         </div>
       </div>
 {/* Demo Section */}
