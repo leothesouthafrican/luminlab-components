@@ -2,21 +2,47 @@
 
 import React, { useState } from 'react';
 import './App.css';
+import jsonData from './data/data.json';
 import ButtonComponent from './components/ButtonComponent';
 import FloatingCardComponent from './components/FloatingCardComponent';
-import IvoryCardTable from './components/IvoryCardTable';  // <-- Import the new component
-import StatsCard from './components/StatsCard';  // Import the new component
-import MinimalStatsCard from './components/MinimalStatsCard';  // Import the new component
-import BerRatingMedallion from './components/BerRatingMedallion';  // Import the new component
+import IvoryCardTable from './components/IvoryCardTable';
+import StatsCard from './components/StatsCard';
+import MinimalStatsCard from './components/MinimalStatsCard';
+import BerRatingMedallion from './components/BerRatingMedallion';
+
+// Define berToNumeric mapping
+const berToNumeric = {
+  'A1': 15, 'A2': 14, 'A3': 13,
+  'B1': 12, 'B2': 11, 'B3': 10,
+  'C1': 9, 'C2': 8, 'C3': 7,
+  'D1': 6, 'D2': 5,
+  'E1': 4, 'E2': 3,
+  'F': 2,
+  'G': 1
+};
 
 function App() {
+  // Sort the plans based on their EnergyRating
+  const sortedPlans = [...jsonData].sort((a, b) => berToNumeric[b.EnergyRating] - berToNumeric[a.EnergyRating]);
+
+  // Cluster the ratings
+  const goldRating = sortedPlans[0].EnergyRating;
+  const bronzeRating = sortedPlans[sortedPlans.length - 1].EnergyRating;
+
+  const getColorFromRating = (rating) => {
+    if (rating === goldRating) return 'gold';
+    if (rating === bronzeRating) return 'bronze';
+    return 'silver';
+  };
+
   const [topCard, setTopCard] = useState('gold');
-  const cardData = [
-    { color: 'gold', berRating: 'A1' },
-    { color: 'silver', berRating: 'B2' },
-    { color: 'bronze', berRating: 'C2' }
-  ];
-  const cardColors = ['gold', 'silver', 'bronze'];
+  const cardData = sortedPlans.map(item => ({
+    color: getColorFromRating(item.EnergyRating),
+    berRating: item.EnergyRating
+  }));
+
+  // Define cardColors based on cardData
+  const cardColors = [...new Set(cardData.map(card => card.color))];
 
   const retrofitMeasures = [
     { name: "Insulation", cost: "€2000", savings: "€50/month" },
@@ -76,7 +102,7 @@ function App() {
         <h2>Stats</h2>
         <div className="card-container">
           <StatsCard berRating={3} />
-          <MinimalStatsCard berRating={3} />
+          <MinimalStatsCard berRating="A1" />
         </div>
       </div>
 
@@ -106,8 +132,8 @@ function App() {
         </div>
       </div>
     </div>
-);
-
+  );
 }
 
 export default App;
+

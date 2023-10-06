@@ -1,0 +1,83 @@
+[
+    {
+        "HeatSystemControlCat": 3.0,
+        "UValueWall": 0.11,
+        "OBBoilerThermostatControlled": "YES",
+        "WHMainSystemEff": 650.0,
+        "UValueDoor": 0.9,
+        "HeatExchangerEff": 90.0,
+        "ElectricityConsumption": 75.0,
+        "VentilationMethod": "Bal.whole mech.vent heat recvr",
+        "MainSpaceHeatingFuel": "Electricity",
+        "UValueWindow": 0.98,
+        "UValueRoof": 0.15,
+        "NoOilBoilerHeatingPumps": "2",
+        "HSMainSystemEfficiency": 650.0,
+        "UValueFloor": 0.15,
+        "MainWaterHeatingFuel": "Electricity",
+        "total_price": 126263,
+        "grant": 0,
+        "final price": 126263,
+        "EnergyRating": "B3",
+        "Cards": {
+
+            "heat_controls": 1600,
+            "solar": 8500,
+            "ventilation": 3900
+        }
+    },
+    {
+        "HeatSystemControlCat": 3.0,
+        "UValueWall": 0.11,
+        "OBBoilerThermostatControlled": "YES",
+        "WHMainSystemEff": 650.0,
+        "UValueDoor": 0.9,
+        "HeatExchangerEff": 90.0,
+        "ElectricityConsumption": 75.0,
+        "VentilationMethod": "Bal.whole mech.vent heat recvr",
+        "MainSpaceHeatingFuel": "Electricity",
+        "UValueWindow": 0.98,
+        "UValueRoof": 0.15,
+        "NoOilBoilerHeatingPumps": "2",
+        "HSMainSystemEfficiency": 650.0,
+        "UValueFloor": 0.15,
+        "MainWaterHeatingFuel": "Electricity",
+        "total_price": 126969,
+        "grant": 0,
+        "final price": 126969,
+        "EnergyRating": "A2",
+        "Cards": {
+            "door": 725,
+            "floor": 2758,
+            "heat_controls": 1600,
+            "heat_pumps": 100000
+        }
+    },
+    {
+        "HeatSystemControlCat": 3.0,
+        "UValueWall": 0.11,
+        "OBBoilerThermostatControlled": "YES",
+        "WHMainSystemEff": 650.0,
+        "UValueDoor": 0.9,
+        "HeatExchangerEff": 90.0,
+        "ElectricityConsumption": 75.0,
+        "VentilationMethod": "Bal.whole mech.vent heat recvr",
+        "MainSpaceHeatingFuel": "Electricity",
+        "UValueWindow": 0.98,
+        "UValueRoof": 0.15,
+        "NoOilBoilerHeatingPumps": "2",
+        "HSMainSystemEfficiency": 650.0,
+        "UValueFloor": 0.15,
+        "MainWaterHeatingFuel": "Electricity",
+        "total_price": 114000,
+        "grant": 5400,
+        "final price": 108600,
+        "EnergyRating": "A1",
+        "Cards": {
+            "heat_controls": 1600,
+            "heat_pumps": 100000,
+            "solar": 8500,
+            "ventilation": 3900
+        }
+    }
+]

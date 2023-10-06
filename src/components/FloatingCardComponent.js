@@ -6,7 +6,7 @@ import StatsCard from './StatsCard';
 import MinimalStatsCard from './MinimalStatsCard';
 import BerRatingMedallion from './BerRatingMedallion';
 
-const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMeasures, isDemo, showStatsCard }) => {
+const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMeasures, isDemo, showStatsCard, berRating }) => {
   return (
     <div 
       className={`floating-card ${color}`} 
@@ -18,9 +18,9 @@ const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMea
           {showStatsCard && (
             <>
               <div className="ber-medallion-container">
-                <BerRatingMedallion berRating="A1" />
+                <BerRatingMedallion berRating={berRating} />
               </div>
-              {isDemo ? <MinimalStatsCard berRating={3} className="minimal-stats-card-demo" /> : <StatsCard berRating={3} />}
+              {isDemo ? <MinimalStatsCard berRating={berRating} className="minimal-stats-card-demo" /> : <StatsCard berRating={3} />}
             </>
           )}
         </div>
