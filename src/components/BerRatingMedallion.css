@@ -1,8 +1,11 @@
 .ber-medallion {
   position: relative;
   width: 250px;
-  height: 100px;
+  height: 120px;
   border-radius: 10%;
+  padding-bottom: 0px;
+  padding: 16px;
+  margin-right: 10px;
   box-shadow: 
     -3px -3px 0px rgba(0, 0, 0, 0.3),
     -6px -6px 0px rgba(0, 0, 0, 0.2),
@@ -70,4 +73,17 @@
     -9px -9px 0px rgba(120, 90, 30, 0.5),
     3px 0px 0px rgba(120, 90, 30, 0.1),  /* Right border */
     0px 3px 0px rgba(120, 90, 30, 0.1);  /* Bottom border */
+}
+
+@media (max-width: 720px) { /* Adjust 600px to the breakpoint you desire */
+  .ber-medallion {
+    width: 100px; /* Decrease the width */
+    margin-right: 10px;
+  }
+
+  .ber-rating {
+    font-size: 3em; /* Decrease the font size */
+    padding-left: 8px; /* Decrease the left padding */
+    padding-right: 8px; /* Decrease the right padding */
+  }
 }
