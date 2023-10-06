@@ -3,10 +3,12 @@
   width: 250px;
   height: 100px;
   border-radius: 10%;
-  background: gold;
-  box-shadow: -3px -3px 0px rgba(0, 0, 0, 0.3),
-              -6px -6px 0px rgba(0, 0, 0, 0.2),
-              -9px -9px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    -3px -3px 0px rgba(0, 0, 0, 0.3),
+    -6px -6px 0px rgba(0, 0, 0, 0.2),
+    -9px -9px 0px rgba(0, 0, 0, 0.1),
+    2px 0px 0px rgba(0, 0, 0, 0.025),  /* Right border */
+    0px 2px 0px rgba(0, 0, 0, 0.05);  /* Bottom border */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,9 +18,10 @@
 .ber-rating {
   font-size: 4em;
   font-weight: bold;
-  text-shadow: -3px -3px 0px rgba(0, 0, 0, 0.3),
-               -6px -6px 0px rgba(0, 0, 0, 0.2),
-               -9px -9px 0px rgba(0, 0, 0, 0.1);
+  text-shadow: 
+    -3px -3px 0px rgba(0, 0, 0, 0.3),
+    -6px -6px 0px rgba(0, 0, 0, 0.2),
+    -9px -9px 0px rgba(0, 0, 0, 0.1);
   color: white;
 }
 
@@ -39,3 +42,32 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
+.ber-medallion.gold {
+  background: linear-gradient(135deg, rgba(245, 215, 110, 0.95), #ffd900);
+  box-shadow: 
+    -3px -3px 0px rgba(200, 175, 50, 0.95),
+    -6px -6px 0px rgba(200, 175, 50, 0.7),
+    -9px -9px 0px rgba(200, 175, 50, 0.5),
+    3px 0px 0px rgba(200, 175, 50, 0.1),  /* Right border */
+    0px 3px 0px rgba(200, 175, 50, 0.1);  /* Bottom border */
+}
+
+.ber-medallion.silver {
+  background: linear-gradient(135deg, rgba(212, 212, 212, 0.95), rgba(168, 168, 168, 0.95));
+  box-shadow: 
+    -3px -3px 0px rgba(150, 150, 150, 0.95),
+    -6px -6px 0px rgba(150, 150, 150, 0.7),
+    -9px -9px 0px rgba(150, 150, 150, 0.5),
+    3px 0px 0px rgba(150, 150, 150, 0.1),  /* Right border */
+    0px 3px 0px rgba(150, 150, 150, 0.1);  /* Bottom border */
+}
+
+.ber-medallion.bronze {
+  background: linear-gradient(135deg, rgba(166, 121, 41, 0.95), #cd8032);
+  box-shadow: 
+    -3px -3px 0px rgba(120, 90, 30, 0.95),
+    -6px -6px 0px rgba(120, 90, 30, 0.7),
+    -9px -9px 0px rgba(120, 90, 30, 0.5),
+    3px 0px 0px rgba(120, 90, 30, 0.1),  /* Right border */
+    0px 3px 0px rgba(120, 90, 30, 0.1);  /* Bottom border */
+}

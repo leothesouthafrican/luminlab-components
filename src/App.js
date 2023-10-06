@@ -11,6 +11,11 @@ import BerRatingMedallion from './components/BerRatingMedallion';  // Import the
 
 function App() {
   const [topCard, setTopCard] = useState('gold');
+  const cardData = [
+    { color: 'gold', berRating: 'A1' },
+    { color: 'silver', berRating: 'B2' },
+    { color: 'bronze', berRating: 'C2' }
+  ];
   const cardColors = ['gold', 'silver', 'bronze'];
 
   const retrofitMeasures = [
@@ -25,9 +30,9 @@ function App() {
   };
 
   const cardStyle = (color) => {
-    const index = cardColors.indexOf(topCard);
-    const rotatedColors = [...cardColors.slice(index), ...cardColors.slice(0, index)];
-    const position = rotatedColors.indexOf(color);
+    const index = cardData.findIndex(card => card.color === topCard);
+    const rotatedColors = [...cardData.slice(index), ...cardData.slice(0, index)];
+    const position = rotatedColors.findIndex(card => card.color === color);
 
     return {
       zIndex: 3 - position,
@@ -46,7 +51,7 @@ function App() {
       </div>
 
       <div className="section">
-      <h2>Floating Card Playground</h2>
+        <h2>Floating Card Playground</h2>
         <div className="card-container">
           {cardColors.map((color) => (
             <FloatingCardComponent
@@ -60,46 +65,49 @@ function App() {
         </div>
       </div>
 
-      {/* Move Investment Table here */}
       <div className="section">
         <h2>Investment Table</h2>
         <div className="card-container">
           <IvoryCardTable retrofitMeasures={retrofitMeasures} />
         </div>
       </div>
+
       <div className="section">
         <h2>Stats</h2>
         <div className="card-container">
           <StatsCard berRating={3} />
-          <MinimalStatsCard berRating={3} />  {/* Add the new MinimalStatsCard */}
+          <MinimalStatsCard berRating={3} />
         </div>
       </div>
+
       <div className="section">
         <h2>Ber Rating Medallion</h2>
         <div className="card-container">
           <BerRatingMedallion berRating="A1" />
         </div>
       </div>
-{/* Demo Section */}
-<div className="section">
-  <h2>Demo</h2>
-  <div className="card-container">
-    {cardColors.map((color, index) => (
-      <FloatingCardComponent
-        key={color}
-        color={color}
-        onClick={handleCardClick}
-        style={cardStyle(color)}
-        showButtons={true}
-        retrofitMeasures={retrofitMeasures}
-        isDemo={true}
-        showStatsCard={true}  // Show StatsCard for all cards in the demo section
-      />
-    ))}
-  </div>
-</div>
+
+      <div className="section">
+        <h2>Demo</h2>
+        <div className="card-container">
+          {cardData.map((card) => (
+            <FloatingCardComponent
+              key={card.color}
+              color={card.color}
+              berRating={card.berRating}
+              onClick={handleCardClick}
+              style={cardStyle(card.color)}
+              showButtons={true}
+              retrofitMeasures={retrofitMeasures}
+              isDemo={true}
+              showStatsCard={true}
+            />
+          ))}
+        </div>
+      </div>
     </div>
-  );
+);
+
 }
 
 export default App;

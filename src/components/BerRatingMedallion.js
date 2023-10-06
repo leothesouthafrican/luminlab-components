@@ -1,9 +1,9 @@
 import React from 'react';
 import './BerRatingMedallion.css';
 
-const BerRatingMedallion = ({ berRating }) => {
+const BerRatingMedallion = ({ berRating, color }) => {
   return (
-    <div className="ber-medallion">
+    <div className={`ber-medallion ${color}`}>
       <h1 className="ber-rating">{berRating}</h1>
     </div>
   );
