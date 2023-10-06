@@ -1,5 +1,3 @@
-//MinimalStatsCard.js
-
 import React from 'react';
 import './MinimalStatsCard.css';
 
@@ -18,29 +16,22 @@ const getPercentile = (numericValue) => {
 };
 
 const MinimalStatsCard = ({ berRating }) => {
-  const totalSegments = 10;
+  const totalSegments = 100;
   const numericValue = berToNumeric[berRating] || 0; // Default to 0 if berRating is not valid
   const percentile = getPercentile(numericValue);
   const filledSegmentsCount = Math.round((percentile / 100) * totalSegments);
-  const clampedFilledSegmentsCount = Math.min(Math.max(filledSegmentsCount, 0), totalSegments);
-  const filledSegments = Array(clampedFilledSegmentsCount).fill(true);
-  const emptySegments = Array(totalSegments - clampedFilledSegmentsCount).fill(false);
-  const segments = [...filledSegments, ...emptySegments];
-
-  // Logging statements for debugging
-  console.log("BER Rating:", berRating);
-  console.log("Numeric Value:", numericValue);
-  console.log("Percentile:", percentile);
-  console.log("Filled Segments Count:", filledSegmentsCount);
-  console.log("Clamped Filled Segments Count:", clampedFilledSegmentsCount);
 
   return (
     <div className="minimal-stats-card">
       <div className="title">Your Home's Energy Efficiency</div>
       <div className="subtitle">Compared with the market</div>
       <div className="progress-container">
-        {segments.map((isFilled, index) => (
-          <div className={`segment ${isFilled ? 'filled' : 'empty'}`} style={{backgroundColor: isFilled ? getSegmentColor(index, totalSegments) : '#E1E2E1'}} key={index}></div>
+        {Array.from({ length: totalSegments }).map((_, index) => (
+          <div 
+            className={`segment ${index < filledSegmentsCount ? 'filled' : 'empty'}`} 
+            style={{backgroundColor: index < filledSegmentsCount ? getSegmentColor(index, totalSegments) : '#E1E2E1'}} 
+            key={index}
+          ></div>
         ))}
       </div>
       <div className="rating">Your Percentile: {percentile}%</div>
@@ -48,11 +39,9 @@ const MinimalStatsCard = ({ berRating }) => {
   );
 };
 
-// Helper function to get the segment color based on its position
 const getSegmentColor = (index, total) => {
-  const red = 255 - Math.round((index / total) * 255);
-  const green = Math.round((index / total) * 255);
-  return `rgb(${red}, ${green}, 0)`;
+  const green = 100 + Math.round((index / total) * 155);
+  return `rgb(0, ${green}, 0)`;
 };
 
 export default MinimalStatsCard;
