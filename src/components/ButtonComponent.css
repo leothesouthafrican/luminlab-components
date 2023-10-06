@@ -1,6 +1,5 @@
-/* ButtonComponent.css */
 .duo-button {
-  background-color: #1bb7d4; /* Duolingo's blue color */
+  background-color: rgb(32, 173, 157);
   border: none;
   border-radius: 12px;
   color: white;
@@ -13,24 +12,59 @@
   text-align: center;
   transition: all 0.4s cubic-bezier(0.25, 0.95, 0.25, 1);
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1),
-              -5px -5px 0px 0px rgba(0, 102, 128, 0.95); /* Adding 3D effect */
+              -5px -5px 0px 0px rgba(0, 102, 128, 0.95);
+  position: relative;
+  overflow: hidden; /* This will ensure the sheen effect stays within the button */
 }
 
 .duo-button:hover {
-  background-color: #159ba8; /* Slightly darker for hover */
+  background-color: #159ba8;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
-              -5px -5px 0px 0px rgba(0, 102, 128, 0.95); /* Slightly darker 3D effect */ 
+              -5px -5px 0px 0px rgba(0, 102, 128, 0.95);
   z-index: 4;
 }
 
 .duo-button:active {
-  background-color: #0e7c88; /* Even darker for active click */
-  box-shadow: none; /* Remove the box shadow */
-  transform: translate(-5px, -5px); /* Move the button up and to the left */
+  background-color: #0e7c88;
+  box-shadow: none;
+  transform: translate(-5px, -5px);
 }
 
-.card-button-container .duo-button {
-  width: 95%;  /* Makes the button take the full width of the container */
-  margin: 0;  /* Removes extra margins */
+.card-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
+.left-button {
+  flex: 0.25; /* This was the right button's flex value */
+  margin-right: 0px; /* Add some margin to separate the two buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-button {
+  flex: 9.75; /* This was the left button's flex value */
+}
+
+.icon {
+  font-size: 1.5em;
+}
+
+/* Sheen effect */
+.duo-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start from outside the button */
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-30deg);
+  transition: 0.3s;
+}
+
+.duo-button:hover:before {
+  left: 100%; /* Move the sheen to the right end of the button */
+}
