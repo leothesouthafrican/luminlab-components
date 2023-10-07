@@ -1,13 +1,16 @@
 //IvoryCardTable.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import './IvoryCardTable.css';
+import HoverItem from './HoverItem';
 
 const IvoryCardTable = ({ data }) => {
-  console.log(data);
+  const [activeExplanation, setActiveExplanation] = useState(null);
+
   if (!data) {
     return null; // or return a loading spinner or some placeholder content
   }
+
   const formatAmount = (amount) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "); // Adds spaces for thousands
   };
@@ -38,15 +41,30 @@ const IvoryCardTable = ({ data }) => {
             </thead>
             <tbody>
               <tr>
-                <td>Initial Investment</td>
+                <HoverItem 
+                  label="Initial Investment" 
+                  explanation="The base amount required for the retrofit measures before any additional costs or grants."
+                  onHover={() => setActiveExplanation("The base amount required for the retrofit measures before any additional costs or grants.")}
+                  onLeave={() => setActiveExplanation(null)}
+                />
                 <td>€{formatAmount(data.total_price)}</td>
               </tr>
               <tr>
-                <td>Additional Cost</td>
+                <HoverItem 
+                  label="Additional Cost" 
+                  explanation="The extra costs that might be incurred in addition to the initial investment."
+                  onHover={() => setActiveExplanation("The extra costs that might be incurred in addition to the initial investment.")}
+                  onLeave={() => setActiveExplanation(null)}
+                />
                 <td>€{formatAmount(additionalCost)}</td>
               </tr>
               <tr>
-                <td>Grant</td>
+                <HoverItem 
+                  label="Grant" 
+                  explanation="The amount you'll be granted or subsidized for the retrofit measures."
+                  onHover={() => setActiveExplanation("The amount you'll be granted or subsidized for the retrofit measures.")}
+                  onLeave={() => setActiveExplanation(null)}
+                />
                 <td>€{formatAmount(data.grant)}</td>
               </tr>
               <tr className="bold-border-top double-border-bottom">
@@ -59,29 +77,35 @@ const IvoryCardTable = ({ data }) => {
 
         {/* Second Table: Measures to be Taken */}
         <div className="ivory-table-item">
-          <h3 className="ivory-card-table-header">Measures to be Taken</h3>
-          <table className="ivory-card-table">
-            <thead>
-              <tr>
-                <th>Measure</th>
-                <th>Cost</th>
-                <th>Savings</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(data.Cards).map(([measure, cost], index) => (
-                <tr key={index}>
-                  <td>{measure.replace(/_/g, ' ')}</td>
-                  <td>€{formatAmount(cost)}</td>
-                  <td>€{formatAmount(monthlySavingsForMeasure(cost))} monthly*</td>
+          <h3 className="ivory-card-table-header">
+            {activeExplanation ? "Explanation" : "Measures to be Taken"}
+          </h3>
+          {activeExplanation ? (
+            <div className="hover-popup-static">{activeExplanation}</div>
+          ) : (
+            <table className="ivory-card-table">
+              <thead>
+                <tr>
+                  <th>Measure</th>
+                  <th>Cost</th>
+                  <th>Savings</th>
                 </tr>
-              ))}
-              <tr className="payback-row bold-border-top double-border-bottom">
-                <td colSpan="2"><strong>Payback Period</strong></td>
-                <td><strong>{paybackPeriod} years</strong></td>
-              </tr>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {Object.entries(data.Cards).map(([measure, cost], index) => (
+                  <tr key={index}>
+                    <td>{measure.replace(/_/g, ' ')}</td>
+                    <td>€{formatAmount(cost)}</td>
+                    <td>€{formatAmount(monthlySavingsForMeasure(cost))} monthly*</td>
+                  </tr>
+                ))}
+                <tr className="payback-row bold-border-top double-border-bottom">
+                  <td colSpan="2"><strong>Payback Period</strong></td>
+                  <td><strong>{paybackPeriod} years</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>

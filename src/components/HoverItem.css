@@ -1,0 +1,38 @@
+/* HoverItem.css */
+.hover-item {
+    position: relative;
+    transition: background-color 0.5s;
+  }
+  
+  .hover-item:hover {
+    background-image: linear-gradient(to right, gold, gold);
+  }
+
+.hover-popup-static {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    white-space: normal;  /* Allow text to wrap */
+    z-index: 1000;
+    margin-top: 10px;
+    max-width: 90%;  /* Set a maximum width */
+    word-wrap: break-word;  /* Break long words if necessary */
+  }
+
+  @keyframes highlightAnimation {
+    from {
+      background-size: 0% 100%;
+    }
+    to {
+      background-size: 100% 100%;
+    }
+  }
+  
+  .hover-item:hover {
+    background-image: linear-gradient(to right, gold, gold);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    animation: highlightAnimation 0.5s forwards;
+  }
