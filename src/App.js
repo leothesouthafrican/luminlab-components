@@ -114,7 +114,6 @@ function App() {
       </div>
 
       <div className="section">
-        <h2>Demo</h2>
         <div className="card-container">
           {cardData.map((card, index) => (
             <FloatingCardComponent
