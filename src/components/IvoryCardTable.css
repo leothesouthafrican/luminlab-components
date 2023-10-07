@@ -6,9 +6,9 @@
     border-radius: 12px; /* Rounded corners like your floating cards */
     box-shadow: none; /* Flat card */
     margin: auto;
-    width: 95%;
+    width: 93%;
     margin-top: 5px;
-    margin-bottom: 0px;
+    margin-bottom: 2px;
     flex-grow: 1;
     overflow-y: auto;  /* Scroll when content overflows */
     height: auto;
