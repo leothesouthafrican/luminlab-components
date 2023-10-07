@@ -47,8 +47,8 @@ const IvoryCardTable = ({ data }) => {
                 <tr>
                   <HoverItem 
                     label="Initial Investment" 
-                    explanation="The base amount required for the retrofit measures before any additional costs or grants."
-                    onHover={() => setActiveExplanation("The base amount required for the retrofit measures before any additional costs or grants.")}
+                    explanation="The base amount required for the retrofit measures before any additional costs or grants. The breakdown of this amount can be seen on the right under 'Measures to be Taken'."
+                    onHover={() => setActiveExplanation("The base amount required for the retrofit measures before any additional costs or grants. The breakdown of this amount can be seen on the right under 'Measures to be Taken'.")}
                     onLeave={() => setActiveExplanation(null)}
                   />
                   <td>€{formatAmount(data.total_price)}</td>
