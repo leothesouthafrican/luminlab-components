@@ -31,7 +31,7 @@ const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMea
         
         {showButtons && (
           <div className="card-button-container">
-            <ButtonComponent label="" icon="🔗" className="left-button" /> {/* This was the right button */}
+            <ButtonComponent label="" icon="📤" className="left-button" />
             <ButtonComponent label="Proceed with Retrofit" className="right-button" /> {/* This was the left button */}
           </div>
         )}
