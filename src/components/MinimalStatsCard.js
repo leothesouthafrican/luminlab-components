@@ -16,7 +16,7 @@ const getPercentile = (numericValue) => {
 };
 
 const MinimalStatsCard = ({ berRating }) => {
-  const totalSegments = 100;
+  const totalSegments = 25;
   const numericValue = berToNumeric[berRating] || 0; // Default to 0 if berRating is not valid
   const percentile = getPercentile(numericValue);
   const filledSegmentsCount = Math.round((percentile / 100) * totalSegments);

@@ -15,15 +15,15 @@
         "HSMainSystemEfficiency": 650.0,
         "UValueFloor": 0.15,
         "MainWaterHeatingFuel": "Electricity",
-        "total_price": 126263,
-        "grant": 0,
-        "final price": 126263,
+        "total_price": 14000,
+        "grant": 1750,
+        "final price": 12250,
         "EnergyRating": "B3",
         "Cards": {
 
-            "heat_controls": 1600,
-            "solar": 8500,
-            "ventilation": 3900
+            "Heat Controls": 1600,
+            "Solar": 8500,
+            "Ventilation": 3900
         }
     },
     {
@@ -42,15 +42,15 @@
         "HSMainSystemEfficiency": 650.0,
         "UValueFloor": 0.15,
         "MainWaterHeatingFuel": "Electricity",
-        "total_price": 126969,
-        "grant": 0,
-        "final price": 126969,
+        "total_price": 105083,
+        "grant": 10800,
+        "final price": 94283,
         "EnergyRating": "A2",
         "Cards": {
-            "door": 725,
-            "floor": 2758,
-            "heat_controls": 1600,
-            "heat_pumps": 100000
+            "Door": 725,
+            "Floor": 2758,
+            "Heat Controls": 1600,
+            "Heat Pump": 100000
         }
     },
     {
@@ -70,14 +70,14 @@
         "UValueFloor": 0.15,
         "MainWaterHeatingFuel": "Electricity",
         "total_price": 114000,
-        "grant": 5400,
+        "grant": 11800,
         "final price": 108600,
         "EnergyRating": "A1",
         "Cards": {
-            "heat_controls": 1600,
-            "heat_pumps": 100000,
-            "solar": 8500,
-            "ventilation": 3900
+            "Heat Controls": 1600,
+            "Heat Pump": 40000,
+            "Solar": 8500,
+            "Ventilation": 3900
         }
     }
 ]

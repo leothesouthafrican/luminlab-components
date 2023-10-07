@@ -20,10 +20,10 @@
 }
   
 .ivory-card-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.7rem;  /* smaller font */
-    max-width: calc(100% - 0px); /* 100% - 2 * padding */
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;  /* default font size for larger screens */
+  max-width: calc(100% - 0px); /* 100% - 2 * padding */
 }
 
 .ivory-table-row {
@@ -61,3 +61,13 @@
   .double-border-bottom th, .double-border-bottom td {
     border-bottom: double 3px rgba(0, 0, 0, 0.87);
   }
+
+  /* Media query for screens with a max width of 600px (e.g., mobile devices) */
+@media (max-width: 720px) {
+  .ivory-card-table {
+      font-size: 0.271rem;  /* smaller font size for smaller screens */
+  }
+  .ivory-card-table-header {
+    font-size: 0.7rem;  /* slightly smaller font size for table headers on smaller screens */
+}
+}

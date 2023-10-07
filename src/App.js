@@ -116,7 +116,7 @@ function App() {
       <div className="section">
         <h2>Demo</h2>
         <div className="card-container">
-          {cardData.map((card) => (
+          {cardData.map((card, index) => (
             <FloatingCardComponent
               key={card.color}
               color={card.color}
@@ -127,6 +127,7 @@ function App() {
               retrofitMeasures={retrofitMeasures}
               isDemo={true}
               showStatsCard={true}
+              data={sortedPlans[index]}  // Ensure that sortedPlans[index] is correctly structured
             />
           ))}
         </div>

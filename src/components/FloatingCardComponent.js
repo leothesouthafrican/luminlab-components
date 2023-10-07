@@ -1,3 +1,5 @@
+//FloatingCardComponent.js
+
 import React from 'react';
 import './FloatingCardComponent.css';
 import ButtonComponent from './ButtonComponent';
@@ -6,7 +8,7 @@ import StatsCard from './StatsCard';
 import MinimalStatsCard from './MinimalStatsCard';
 import BerRatingMedallion from './BerRatingMedallion';
 
-const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMeasures, isDemo, showStatsCard, berRating }) => {
+const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMeasures, isDemo, showStatsCard, berRating, data }) => {
   return (
     <div 
       className={`floating-card ${color}`} 
@@ -25,7 +27,7 @@ const FloatingCardComponent = ({ color, onClick, style, showButtons, retrofitMea
           )}
         </div>
         
-        {showButtons && <IvoryCardTable retrofitMeasures={retrofitMeasures} />}
+        {showButtons && <IvoryCardTable retrofitMeasures={retrofitMeasures} data={data} />}
         
         {showButtons && (
           <div className="card-button-container">

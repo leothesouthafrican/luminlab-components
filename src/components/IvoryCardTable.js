@@ -1,8 +1,28 @@
-// IvoryCardTable.js
+//IvoryCardTable.js
+
 import React from 'react';
 import './IvoryCardTable.css';
 
-const IvoryCardTable = ({ retrofitMeasures }) => {
+const IvoryCardTable = ({ data }) => {
+  console.log(data);
+  if (!data) {
+    return null; // or return a loading spinner or some placeholder content
+  }
+  const formatAmount = (amount) => {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "); // Adds spaces for thousands
+  };
+
+  const monthlySavingsForMeasure = (measureCost) => {
+    if (measureCost > 25000) {
+      return Math.round(0.01 * measureCost / 2);
+    }
+    return Math.round(0.02 * measureCost);
+  };
+
+  const additionalCost = Math.round(0.05 * data.total_price);
+  const totalMonthlySavings = Object.values(data.Cards).reduce((acc, cost) => acc + monthlySavingsForMeasure(cost), 0);
+  const paybackPeriod = Math.round((data.total_price + additionalCost - data.grant) / (totalMonthlySavings * 12));
+
   return (
     <div className="ivory-card-table-container">
       <div className="ivory-table-row">
@@ -19,19 +39,19 @@ const IvoryCardTable = ({ retrofitMeasures }) => {
             <tbody>
               <tr>
                 <td>Initial Investment</td>
-                <td>€5000</td>
+                <td>€{formatAmount(data.total_price)}</td>
               </tr>
               <tr>
                 <td>Additional Cost</td>
-                <td>€200</td>
+                <td>€{formatAmount(additionalCost)}</td>
               </tr>
               <tr>
                 <td>Grant</td>
-                <td>€1000</td>
+                <td>€{formatAmount(data.grant)}</td>
               </tr>
               <tr className="bold-border-top double-border-bottom">
                 <td><strong>Total</strong></td>
-                <td><strong>€4200</strong></td>
+                <td><strong>€{formatAmount(data.total_price + additionalCost - data.grant)}</strong></td>
               </tr>
             </tbody>
           </table>
@@ -49,16 +69,16 @@ const IvoryCardTable = ({ retrofitMeasures }) => {
               </tr>
             </thead>
             <tbody>
-              {retrofitMeasures.map((measure, index) => (
+              {Object.entries(data.Cards).map(([measure, cost], index) => (
                 <tr key={index}>
-                  <td>{measure.name}</td>
-                  <td>{measure.cost}</td>
-                  <td>{measure.savings}</td>
+                  <td>{measure.replace(/_/g, ' ')}</td>
+                  <td>€{formatAmount(cost)}</td>
+                  <td>€{formatAmount(monthlySavingsForMeasure(cost))} monthly*</td>
                 </tr>
               ))}
               <tr className="payback-row bold-border-top double-border-bottom">
                 <td colSpan="2"><strong>Payback Period</strong></td>
-                <td><strong>5 years</strong></td>
+                <td><strong>{paybackPeriod} years</strong></td>
               </tr>
             </tbody>
           </table>
