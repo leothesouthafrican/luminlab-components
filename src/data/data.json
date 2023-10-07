@@ -42,15 +42,15 @@
         "HSMainSystemEfficiency": 650.0,
         "UValueFloor": 0.15,
         "MainWaterHeatingFuel": "Electricity",
-        "total_price": 105083,
-        "grant": 10800,
-        "final price": 94283,
+        "total_price": 45083,
+        "grant": 7000,
+        "final price": 38083,
         "EnergyRating": "A2",
         "Cards": {
             "Door": 725,
             "Floor": 2758,
             "Heat Controls": 1600,
-            "Heat Pump": 100000
+            "Heat Pump": 40000
         }
     },
     {
@@ -69,9 +69,9 @@
         "HSMainSystemEfficiency": 650.0,
         "UValueFloor": 0.15,
         "MainWaterHeatingFuel": "Electricity",
-        "total_price": 114000,
-        "grant": 11800,
-        "final price": 108600,
+        "total_price": 54000,
+        "grant": 7800,
+        "final price": 46200,
         "EnergyRating": "A1",
         "Cards": {
             "Heat Controls": 1600,

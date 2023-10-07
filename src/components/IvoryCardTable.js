@@ -1,14 +1,13 @@
-//IvoryCardTable.js
-
 import React, { useState } from 'react';
 import './IvoryCardTable.css';
 import HoverItem from './HoverItem';
 
 const IvoryCardTable = ({ data }) => {
   const [activeExplanation, setActiveExplanation] = useState(null);
+  const [activeSavingsExplanation, setActiveSavingsExplanation] = useState(null);
 
   if (!data) {
-    return null; // or return a loading spinner or some placeholder content
+    return null;
   }
 
   const formatAmount = (amount) => {
@@ -31,48 +30,54 @@ const IvoryCardTable = ({ data }) => {
       <div className="ivory-table-row">
         {/* First Table: Investment Breakdown */}
         <div className="ivory-table-item">
-          <h3 className="ivory-card-table-header">Investment Breakdown</h3>
-          <table className="ivory-card-table">
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <HoverItem 
-                  label="Initial Investment" 
-                  explanation="The base amount required for the retrofit measures before any additional costs or grants."
-                  onHover={() => setActiveExplanation("The base amount required for the retrofit measures before any additional costs or grants.")}
-                  onLeave={() => setActiveExplanation(null)}
-                />
-                <td>€{formatAmount(data.total_price)}</td>
-              </tr>
-              <tr>
-                <HoverItem 
-                  label="Additional Cost" 
-                  explanation="The extra costs that might be incurred in addition to the initial investment."
-                  onHover={() => setActiveExplanation("The extra costs that might be incurred in addition to the initial investment.")}
-                  onLeave={() => setActiveExplanation(null)}
-                />
-                <td>€{formatAmount(additionalCost)}</td>
-              </tr>
-              <tr>
-                <HoverItem 
-                  label="Grant" 
-                  explanation="The amount you'll be granted or subsidized for the retrofit measures."
-                  onHover={() => setActiveExplanation("The amount you'll be granted or subsidized for the retrofit measures.")}
-                  onLeave={() => setActiveExplanation(null)}
-                />
-                <td>€{formatAmount(data.grant)}</td>
-              </tr>
-              <tr className="bold-border-top double-border-bottom">
-                <td><strong>Total</strong></td>
-                <td><strong>€{formatAmount(data.total_price + additionalCost - data.grant)}</strong></td>
-              </tr>
-            </tbody>
-          </table>
+          <h3 className="ivory-card-table-header">
+            {activeSavingsExplanation ? "Explanation" : "Investment Breakdown"}
+          </h3>
+          {activeSavingsExplanation ? (
+            <div className="hover-popup-static">{activeSavingsExplanation}</div>
+          ) : (
+            <table className="ivory-card-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <HoverItem 
+                    label="Initial Investment" 
+                    explanation="The base amount required for the retrofit measures before any additional costs or grants."
+                    onHover={() => setActiveExplanation("The base amount required for the retrofit measures before any additional costs or grants.")}
+                    onLeave={() => setActiveExplanation(null)}
+                  />
+                  <td>€{formatAmount(data.total_price)}</td>
+                </tr>
+                <tr>
+                  <HoverItem 
+                    label="Additional Cost" 
+                    explanation="The extra costs that might be incurred in addition to the initial investment."
+                    onHover={() => setActiveExplanation("The extra costs that might be incurred in addition to the initial investment.")}
+                    onLeave={() => setActiveExplanation(null)}
+                  />
+                  <td>€{formatAmount(additionalCost)}</td>
+                </tr>
+                <tr>
+                  <HoverItem 
+                    label="Grant" 
+                    explanation="The amount you'll be granted or subsidized for the retrofit measures."
+                    onHover={() => setActiveExplanation("The amount you'll be granted or subsidized for the retrofit measures.")}
+                    onLeave={() => setActiveExplanation(null)}
+                  />
+                  <td>€{formatAmount(data.grant)}</td>
+                </tr>
+                <tr className="bold-border-top double-border-bottom">
+                  <td><strong>Total</strong></td>
+                  <td><strong>€{formatAmount(data.total_price + additionalCost - data.grant)}</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          )}
         </div>
 
         {/* Second Table: Measures to be Taken */}
@@ -94,7 +99,13 @@ const IvoryCardTable = ({ data }) => {
               <tbody>
                 {Object.entries(data.Cards).map(([measure, cost], index) => (
                   <tr key={index}>
-                    <td>{measure.replace(/_/g, ' ')}</td>
+                    <HoverItem 
+                      label={measure.replace(/_/g, ' ')}
+                      explanation={`This measure, estimated at €${formatAmount(cost)}, is projected to yield monthly savings of €${formatAmount(monthlySavingsForMeasure(cost))}. Please note that these figures are based on historical data and are provided for informational purposes only. For a detailed breakdown or any further inquiries, kindly consult the virtual assistant in the chat box below.`}
+                      onHover={() => setActiveSavingsExplanation(`This measure, estimated at €${formatAmount(cost)}, is projected to yield monthly savings of €${formatAmount(monthlySavingsForMeasure(cost))}. Please note that these figures are based on historical data and are provided for informational purposes only. For a detailed breakdown or any further inquiries, kindly consult the virtual assistant in the chat box below.`)}
+                      onLeave={() => setActiveSavingsExplanation(null)}
+                      tableType="savings"
+                    />
                     <td>€{formatAmount(cost)}</td>
                     <td>€{formatAmount(monthlySavingsForMeasure(cost))} monthly*</td>
                   </tr>
